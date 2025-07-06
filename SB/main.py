@@ -142,11 +142,12 @@ async def main():
 
     # Планировщик
     scheduler = AsyncIOScheduler()
-    for hour in [21, 9, 19]:
-        scheduler.add_job(send_reminders, 'cron', hour=hour, minute=0, args=[app])
+    times = [(21, 1), (9, 1), (19, 1)]
+    for hour, minute in times:
+        scheduler.add_job(send_reminders, 'cron', hour=hour, minute=minute, args=[app])
     scheduler.start()
 
-    print("✅ Бот запущен.")
+    print("Денис иди нахуй отсюда.")
     await app.run_polling()
 
 
