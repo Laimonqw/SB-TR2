@@ -60,7 +60,7 @@ def get_user_repeat(chat_id: int) -> int:
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     save_user(chat_id)
-    await update.message.reply_text("Денис иди нахкй отсюда")
+    await update.message.reply_text("✅ Вы подписаны на напоминания")
 
 async def stop_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
