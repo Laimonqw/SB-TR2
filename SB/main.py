@@ -142,7 +142,7 @@ async def main():
 
     # Планировщик
     scheduler = AsyncIOScheduler()
-    for hour in [21, 9:01, 19:01]:
+    for hour in [21, 9, 19]:
         scheduler.add_job(send_reminders, 'cron', hour=hour, minute=0, args=[app])
     scheduler.start()
 
