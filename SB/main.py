@@ -118,7 +118,7 @@ async def send_special_reminder(app: Application):
     users = load_users()
     for user_id in users:
         try:
-            await app.bot.send_message(chat_id=int(user_id), text="🌙 Напоминание на ночь: не забудьте зайти в Старс Банк")
+            await app.bot.send_message(chat_id=int(user_id), text="🔔🌙 Напоминание: зайдите в Старс Банк. Доступна бесплатная рулетка! Доброй ночи!")
         except Exception as e:
             print(f"❌ Ошибка при отправке пользователю {user_id}: {e}")
 # ----------------- Настройка Telegram меню -----------------
