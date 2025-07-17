@@ -88,12 +88,12 @@ async def replays_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     args = context.args
 
     if not args or not args[0].isdigit():
-        await update.message.reply_text("❗ Использование: /replays <число от 1 до 10>")
+        await update.message.reply_text("❗ Использование: /replays <число от 1 до 5>")
         return
 
     count = int(args[0])
-    if count < 1 or count > 10:
-        await update.message.reply_text("❗ Введите число от 1 до 10.")
+    if count < 1 or count > 5:
+        await update.message.reply_text("❗ Введите число от 1 до 5.")
         return
 
     save_repeat(chat_id, count)
@@ -114,7 +114,13 @@ async def send_reminders(app: Application):
                     await asyncio.sleep(10)
         except Exception as e:
             print(f"❌ Ошибка при отправке пользователю {user_id}: {e}")
-
+async def send_special_reminder(app: Application):
+    users = load_users()
+    for user_id in users:
+        try:
+            await app.bot.send_message(chat_id=int(user_id), text="🌙 Напоминание на ночь: не забудьте зайти в Старс Банк")
+        except Exception as e:
+            print(f"❌ Ошибка при отправке пользователю {user_id}: {e}")
 # ----------------- Настройка Telegram меню -----------------
 
 async def on_startup(app: Application):
